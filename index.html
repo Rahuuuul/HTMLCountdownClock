@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Countdown Clock </title>
+                <link rel="icon"
+        type="image/png"
+        href="favicon.png">
+
+        <link rel="icon" 
+      type="image/png" 
+      href="favicon.png">
+        <!--CSS-->
+        <link rel='stylesheet' type='text/css' href='indexstyle.css'>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-587S1NH7Z0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-587S1NH7Z0');
+</script>
+    </head>       
+
+
+
+    <header>
+    <body>
+        <!--Change Title of Your Clock Here-->
+            <h1>Title Here</h1>
+            <h2 id="days"></h2>
+            <h3 id="hours"></h3>
+            <h4 id="mins"><h4>
+            <h5 id="secs"></h5>
+            <h6 id="days1"></h6>
+            <script>
+            var startdate = new Date("Jan 27, 2010 09:00:00").getTime();
+            /*
+            Insert the date you want your clock to begin at (e.g. beginning of an event, when you began a project)
+            */
+
+            var enddate = new Date("Nov 17, 2023 15:00:00").getTime();
+            /*
+            Insert the date you want your clock to count down to (e.g. end of promotion, graduation date)
+            */
+
+        
+            var myfunc = setInterval(function() {
+            var now = new Date().getTime();
+
+            
+            var timeleft = enddate - now;
+                
+            var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+                
+            document.getElementById("days").innerHTML = days + " Days"
+            document.getElementById("hours").innerHTML = hours + " Hours" 
+            document.getElementById("mins").innerHTML = minutes + " Minutes" 
+            document.getElementById("secs").innerHTML = seconds + " Seconds" 
+                
+            if (timeleft < 0) {
+                clearInterval(myfunc);
+                document.getElementById("days").innerHTML = "Time's Up!"
+                document.getElementById("hours").innerHTML = "" 
+                document.getElementById("mins").innerHTML = ""
+                document.getElementById("secs").innerHTML = ""
+            }
+            }, 1000);
+
+
+        
+        var myfunc1 = setInterval(function() {
+        var now = new Date().getTime();
+
+    
+        var timeleft1 = now - startdate;
+            
+        var days1 = Math.floor(timeleft1 / (1000 * 60 * 60 * 24));
+
+        //calculating the difference from start to finish
+        var Difference = enddate - startdate;
+
+        //Calculate number of days
+        var DiffDays = Math.floor(Difference / (1000 * 60 * 60 * 24)); 
+        var percent1 = (days1/DiffDays)*100;
+        //round percent
+        var roundedpercent = percent1.toFixed(3)
+        var roundedpercent1 = roundedpercent + "%"
+            
+        document.getElementById("days1").innerHTML = "It has been " +  days1 + " days since we began, so we are " + roundedpercent1 + " of the way there!";
+        /*
+        Change the text here to match what you want it to
+        */
+            
+        if (timeleft1 < 0) {
+            clearInterval(myfunc);
+            document.getElementById("days1").innerHTML = "Time's Up!"
+
+        }
+        }, 1000);
+            </script>
+
+        <div class="bottom-stuff">
+            <!--Info Abt Site-->
+            <a>Made by </a><a href="http://Rahuuuul.github.io/" target="_blank">Rahul</a>
+        </div>
+    </body>
+    </header>
+</html>
